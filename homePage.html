@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Educational Platform</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="stylesheet" href="game.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff;
+      padding-top: 90px;
+      color: #333;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 8%;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      direction: ltr;
+    }
+
+    .menu-icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 22px;
+      cursor: pointer;
+    }
+
+    .menu-icon span {
+      height: 3px;
+      background-color: #4e5ca3;
+      border-radius: 2px;
+    }
+
+    .menu-icon .line1 { width: 22px; }
+    .menu-icon .line2 { width: 16px; }
+    .menu-icon .line3 { width: 10px; }
+
+    .navbar ul {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+
+    .navbar ul li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+
+    .navbar .btns {
+      display: flex;
+      gap: 10px;
+    }
+
+    .navbar .btns a {
+      background-color: #c1d5fd;
+      color: #3f51b5;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .navbar .btns a:hover {
+      background-color: #2c3a9e;
+    }
+
+    .hero {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      background: url("background-01.jpg") no-repeat right center;
+      background-size: contain;
+      background-color: white;
+      padding-right: 8%;
+      justify-content: flex-end;
+    }
+
+    .content {
+      max-width: 600px;
+      text-align: right;
+    }
+
+    .content h1 {
+      font-size: 48px;
+      color: #333;
+      margin-bottom: 20px;
+      line-height: 1.3;
+    }
+
+    .content h1 span {
+      color: #3f51b5;
+      font-weight: bold;
+    }
+
+    .content p {
+      color: #555;
+      margin-bottom: 30px;
+      line-height: 1.6;
+      max-width: 500px;
+    }
+
+    .btn {
+      background-color: #3f51b5;
+      color: white;
+      padding: 12px 24px;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #2c3a9e;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    h1.faq-title {
+      text-align: center;
+      color: #1a1a1a;
+      border-bottom: 3px solid #f60;
+      display: inline-block;
+      padding-bottom: 10px;
+      margin-bottom: 30px;
+    }
+
+    .faq {
+      border: 1px solid #ddd;
+      margin-bottom: 15px;
+      border-radius: 4px;
+    }
+
+    .faq-header {
+      background: #f6f6f6;
+      padding: 15px;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .faq-header::after {
+      content: '\25B2';
+      position: absolute;
+      left: 15px;
+      font-size: 16px;
+      transition: transform 0.3s ease;
+    }
+
+    .faq-content {
+      display: none;
+      padding: 15px;
+      background: #fff;
+      border-top: 1px solid #ddd;
+      line-height: 1.7;
+    }
+
+    .faq.open .faq-content {
+      display: block;
+    }
+
+    .faq.open .faq-header::after {
+      transform: rotate(180deg);
+    }
+
+    a {
+      color: #f60;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Footer Styles */
+    .footer {
+      background: #3f51b5 url('https://www.transparenttextures.com/patterns/polka-dot.png') repeat;
+      color: white;
+      padding-top: 60px;
+      position: relative;
+    }
+
+    .stats {
+      background: white;
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      padding: 20px;
+      border-radius: 20px;
+      position: absolute;
+      top: -60px;
+      right: 50%;
+      transform: translateX(50%);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .stats div {
+      text-align: center;
+      color: #3f51b5;
+      font-weight: bold;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      padding: 60px 20px 20px;
+    }
+
+    .footer-content > div {
+      max-width: 300px;
+    }
+
+    .footer h3 {
+      margin-bottom: 20px;
+      color: white;
+    }
+
+    .footer p,
+    .footer li {
+      margin: 10px 0;
+      color: white;
+      line-height: 1.6;
+    }
+
+    .footer ul {
+      padding: 0;
+      list-style: none;
+    }
+
+    .social-icons i {
+      font-size: 24px;
+      margin-left: 10px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .bottom-bar {
+      text-align: center;
+      background: #0c1c75;
+      padding: 10px;
+      font-size: 14px;
+    }
+
+    .bottom-bar span {
+      color: #FF5E3A;
+    }
+
+    .scroll-top {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background: orange;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 999;
+    }
+    
+  </style>
+</head>
+<body>
+
+  <!-- Navbar Section -->
+  <nav class="navbar">
+    <div class="menu-icon" onclick="toggleMenu()">
+      <span class="line1"></span>
+      <span class="line2"></span>
+      <span class="line3"></span>
+    </div>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About Us</a></li>
+      <li><a href="#">Teachers</a></li>
+      <li><a href="#">Students</a></li>
+    </ul>
+    <div class="btns">
+      <a href="login.html">Login</a>
+      <a href="register.html">Sign Up</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="content">
+      <h1>Start Now <br><span>Your E-Learning</span></h1>
+      <p>An integrated platform for remote learning that allows you to train and test easily from anywhere, anytime.</p>
+      <a href="login.html" class="btn">Get Started</a>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <!-- <div class="container">
+    <h1 class="faq-title">Frequently Asked Questions</h1>
+    <div class="faq">
+      <div class="faq-header">What services does Testat platform provide?</div>
+      <div class="faq-content">
+        <p>Testat platform offers a wide range of services and features in a modern electronic format...</p>
+      </div>
+    </div>
+
+    <div class="faq">
+      <div class="faq-header">What educational stages and grades are covered?</div>
+      <div class="faq-content">
+        <p>Testat platform covers all educational stages from primary to secondary school...</p>
+      </div>
+    </div>
+
+    <div class="faq">
+      <div class="faq-header">What curricula are covered?</div>
+      <div class="faq-content">
+        <p>Testat platform relies on a large network of teachers who have prepared electronic training materials...</p>
+      </div>
+    </div>
+  </div> -->
+
+  <div class="container">
+    <div class="game-info">
+      <div class="game-name">Hangman</div>
+      <div class="category">
+        Word From: <span></span>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="hangman-draw">
+        <div class="the-draw">
+          <div class="the-stand"></div>
+          <div class="the-hang"></div>
+          <div class="the-rope"></div>
+          <div class="the-man">
+            <div class="head"></div>
+            <div class="body"></div>
+            <div class="hands"></div>
+            <div class="legs"></div>
+          </div>
+        </div>
+      </div>
+      <div class="letters"></div>
+    </div>
+    <hr>
+    <div class="letters-guess"></div>
+  </div>
+  <audio id="success" src="audio/success.mp4" preload="auto"></audio>
+  <audio id="fail" src="audio/fail.mp4" preload="auto"></audio>
+ 
+
+  <!-- Footer Section -->
+  <div class="footer">
+
+    <div class="footer-content">
+      <div>
+        <h3>اتصل بنا</h3>
+        <!-- <p><i class="fas fa-phone"></i> رقم الهاتف: <a href="tel:01033330289"> +201033330289</a></p> -->
+        <!-- <p><i class="fas fa-map-marker-alt"></i> مركز تستات للتدريب والتطوير - السادس من أكتوبر - جمهورية مصر العربية</p> -->
+        <p><i class="fas fa-envelope"></i> البريد الإلكتروني:<a href="mailto:ramadannagah1@email.com"> ramadannagah1@gmail.com </a></p>
+        <p><i class="fab fa-whatsapp"></i> الواتساب: <a href="https://wa.me/+0201033330289">01033330289</a> </p>
+      </div>
+      <div>
+        <h3>الصفحات</h3>
+        <ul>
+          <li>الرئيسية</li>
+          <li>مزايا التطبيق</li>
+          <li>الاشتراك وطرق الدفع</li>
+          <li>اتفاقية الاستخدام</li>
+          <li>سياسة الخصوصية</li>
+        </ul>
+      </div>
+      <div>
+        <h1 style="font-size: 36px; color: white;">Exa<span style="color: #f97316;">m</span></h1>
+        <p>  مشروع طلابي من جامعة قناة السويس يهدف لتجميع كل المواد لكل المراحل في مكان واحد – والمزيد قادم قريبًا! </p>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/nagahramadan.ramadanahmed?locale=ar_AR"><i class="fab fa-facebook"></i></a>
+          <i class="fab fa-twitter"></i>
+          <i class="fab fa-google-plus"></i>
+          <a href="www.linkedin.com/in/nagah-ramadan-57b8592a3          "><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="bottom-bar">
+      <p>جميع الحقوق محفوظة لمركز تستات للتدريب والتطوير © 2024. Powered by <span>IT PLUS</span></p>
+    </div>
+  </div>
+
+  <div class="scroll-top" onclick="scrollToTop()">
+    <i class="fas fa-angle-up"></i>
+  </div>
+
+  <script>
+    const faqs = document.querySelectorAll('.faq');
+    faqs.forEach(faq => {
+      faq.querySelector('.faq-header').addEventListener('click', () => {
+        faq.classList.toggle('open');
+      });
+    });
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+ <script src="game.js"></script>
+</body>
+</html>

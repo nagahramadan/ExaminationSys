@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Exam Result</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #ff9966, #ff5e62);
+      color: white;
+      text-align: center;
+      padding-top: 100px;
+    }
+    .result-box {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 40px;
+      border-radius: 20px;
+      width: 60%;
+      margin: auto;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+    h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    .status.pass {
+      color: #00ff99;
+    }
+    .status.fail {
+      color: #ff3333;
+    }
+    .btn {
+      margin-top: 30px;
+      padding: 12px 24px;
+      font-size: 18px;
+      background-color: white;
+      color: #ff5e62;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .btn:hover {
+      background-color: #fce3e3;
+    }
+  </style>
+</head>
+<body>
+  <div class="result-box">
+    <h1>Exam Result</h1>
+    <p id="score"></p>
+    <p id="status" class="status"></p>
+    <a href="homePage.html"><button class="btn" onclick="goHome()">Back to Home</button></a>
+  </div>
+
+  <script>
+    // جلب النتيجة من sessionStorage
+    const score = sessionStorage.getItem("score");
+    const total = sessionStorage.getItem("total");
+
+    const percentage = Math.round((score / total) * 100);
+    document.getElementById("score").textContent = `You scored ${percentage}% (${score} out of ${total})`;
+
+    const statusEl = document.getElementById("status");
+    if (percentage >= 60) {
+      statusEl.textContent = "✅ Congratulations! You Passed.";
+      statusEl.classList.add("pass");
+    } else {
+      statusEl.textContent = "❌ Sorry! You Failed.";
+      statusEl.classList.add("fail");
+    }
+
+    function goHome() {
+      window.location.href = "index.html"; // غيّريه للصفحة الرئيسية عندك
+    }
+  </script>
+  <script src="submit.js"></script>
+</body>
+</html>
