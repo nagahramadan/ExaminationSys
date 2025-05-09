@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // Sign In Handler
 document.getElementById("loginForm").addEventListener("submit", function (e) {
   e.preventDefault();
@@ -25,7 +24,7 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
   } else {
       alert("Invalid email or password. Please try again or register.");
   }
-=======
+});
 // Sign In Handler
 document.getElementById("loginForm").addEventListener("submit", function (e) {
   e.preventDefault();
@@ -52,5 +51,5 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
   } else {
       alert("Invalid email or password. Please try again or register.");
   }
->>>>>>> 6764437 (Initial commit)
+
 });
